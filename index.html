@@ -101,6 +101,17 @@
     footer { border-top: 1px solid var(--border); padding: 27px 0; margin-top: 45px; color: #9290a4; font-size: .82rem; }
     .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .disclaimer { max-width: 720px; margin-top: 13px; color: #777589; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 15px; background: #14141d; overflow: hidden; }
+    .faq-item summary { list-style: none; cursor: pointer; padding: 18px 20px; font-weight: 750; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: #c4b5fd; font-size: 1.35rem; line-height: 1; }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-answer { color: var(--muted); padding: 0 20px 18px; font-size: .92rem; }
+    .payment-note { margin-top: 18px; padding: 19px 21px; border: 1px solid #a78bfa35; border-radius: 15px; background: #7c3aed12; color: #d8d4e8; }
+    .payment-note strong { color: white; }
+    .payment-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .payment-tag { border: 1px solid var(--border); background: #ffffff08; border-radius: 9px; padding: 6px 10px; font-size: .83rem; }
     .float-wa { position: fixed; right: 20px; bottom: 20px; z-index: 20; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: #062b14; box-shadow: 0 10px 35px #0008; }
     .float-wa svg { width: 28px; height: 28px; }
     @media (max-width: 800px) {
@@ -120,6 +131,7 @@
       .orb { width: 220px; height: 220px; }
       .screen { padding: 13px; }
       .products, .how { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
       .product { min-height: 0; }
       .section-head { align-items: start; flex-direction: column; }
       .cta { align-items: start; flex-direction: column; padding: 25px; }
@@ -136,6 +148,7 @@
     <nav class="nav-links" aria-label="Main navigation">
       <a class="desktop" href="#products">Products</a>
       <a class="desktop" href="#how">How it works</a>
+      <a class="desktop" href="#faq">FAQs</a>
       <a class="btn btn-whatsapp" href="#" data-general-wa>Order on WhatsApp ↗</a>
     </nav>
   </div>
@@ -227,6 +240,45 @@
         <div class="step"><div class="step-num">01</div><h3>Choose a product</h3><p>Pick one of the five products and review the available plan or price details.</p></div>
         <div class="step"><div class="step-num">02</div><h3>Send your request</h3><p>Tap the WhatsApp order button. A message with your selected product is prepared for you.</p></div>
         <div class="step"><div class="step-num">03</div><h3>Confirm manually</h3><p>We’ll reply to confirm availability, final price, payment instructions and fulfilment details.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Frequently asked questions</h2><p>Quick answers before you place an order.</p></div>
+      </div>
+      <div class="faq-grid">
+        <details class="faq-item">
+          <summary>How do I order?</summary>
+          <div class="faq-answer">Choose a product, tap its WhatsApp order button, and send the prepared message. We’ll confirm availability and the final details with you directly.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Which payment methods can I use?</summary>
+          <div class="faq-answer">Easypaisa and JazzCash may be available. Please confirm the current payment options and recipient details with us on WhatsApp before sending any payment.</div>
+        </details>
+        <details class="faq-item">
+          <summary>When will my subscription be activated?</summary>
+          <div class="faq-answer">Activation or delivery timing depends on the product and availability. Please ask us to confirm the expected timing before you pay.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use a plan on any device?</summary>
+          <div class="faq-answer">Device access depends on the selected product and plan. For Netflix, select the device option shown on this page; ask us to confirm compatibility for other services.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Are the displayed prices final?</summary>
+          <div class="faq-answer">The prices shown are in Pakistani rupees (PKR). Please confirm availability, the applicable price, duration, and any plan limitations with us before completing your order.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What if I have a problem with my order?</summary>
+          <div class="faq-answer">Contact us through WhatsApp with your order details. Please confirm the applicable support, replacement, and refund terms before purchasing.</div>
+        </details>
+      </div>
+      <div class="payment-note">
+        <strong>Payment & order safety</strong>
+        <div>Always confirm the order details and payment recipient directly with Stream Zone before paying. Never share your banking PIN or one-time verification code.</div>
+        <div class="payment-tags"><span class="payment-tag">Easypaisa</span><span class="payment-tag">JazzCash</span><span class="payment-tag">WhatsApp support</span></div>
       </div>
     </div>
   </section>
