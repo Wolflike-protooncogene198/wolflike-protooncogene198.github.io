@@ -268,7 +268,7 @@
           <div class="product-head"><div class="product-icon iptv"><img class="brand-logo iptv-brand-logo" src="assets/logos/iptv.svg" alt="IPTV logo"></div><div><h3>IPTV</h3><div class="sub">Live TV entertainment</div></div></div>
           <div class="product-label"><span class="label-dot"></span> Monthly plan</div><p>Explore live TV entertainment with a simple monthly price. Please confirm supported devices and licensed content availability before ordering.</p>
           <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 450</strong></div><div class="price-note">Price per month · PKR</div></div>
-          <button class="btn btn-whatsapp" data-order="IPTV" data-plans="Monthly subscription — Rs. 450; please confirm supported devices and authorized content availability">Order IPTV ↗</button><div class="product-footnote">Confirm supported devices and content availability</div>
+          <button class="btn btn-whatsapp" data-order="IPTV" data-plans="Monthly subscription — Rs. 450">Order IPTV ↗</button><div class="product-footnote">Confirm supported devices and content availability</div>
         </article>
 
         <article class="product">
@@ -399,7 +399,7 @@
         .map(detail => detail.trim())
         .filter(Boolean)
         .join(" ");
-      openWhatsApp(`Hi Stream Zone! I'd like to place an order.\n\n${product} ${planDetails}\n\nPlease confirm availability & payment details.  Thank you.`);
+      openWhatsApp(`Hi Stream Zone! I'd like to place an order.\n${product} ${planDetails}\nPlease confirm availability & payment details. Thank you.`);
     });
   });
 
