@@ -23,7 +23,7 @@
       <div class="form-actions"><button id="login-button" class="btn" type="submit">Sign in</button></div>
     </form>
     <div id="auth-message" class="message hidden" role="status"></div>
-    <p class="footer-note">For security, account creation is disabled here. Create the admin user in your Supabase dashboard and authorize its user ID using the setup guide.</p>
+    <p class="footer-note">For security, account creation is disabled here. Create the admin user in your Supabase dashboard and authorize its user ID using the <a href="ORDER-MANAGEMENT-SETUP.md">setup guide</a>.</p>
   </section>
 
   <section id="dashboard" class="hidden">
@@ -107,9 +107,10 @@
     e.preventDefault();hideMessage(orderMessage);$("save-order").disabled=true;
     const record={customer_name:$("customer_name").value.trim(),customer_phone:$("customer_phone").value.trim()||null,product:$("product").value,plan:$("plan").value.trim()||null,amount:Number($("amount").value),payment_status:$("payment_status").value,activation_status:$("activation_status").value,renewal_date:$("renewal_date").value||null,order_date:$("order_date").value||new Date().toISOString().slice(0,10),notes:$("notes").value.trim()||null};
     try{
-      const result=editingId?await client.from("orders").update(record).eq("id",editingId):await client.from("orders").insert(record);
+      const wasEditing=Boolean(editingId);
+      const result=wasEditing?await client.from("orders").update(record).eq("id",editingId):await client.from("orders").insert(record);
       if(result.error)throw result.error;
-      clearForm();message(tableMessage,editingId?"Order updated.":"Order saved.");await loadOrders();
+      clearForm();message(tableMessage,wasEditing?"Order updated.":"Order saved.");await loadOrders();
     }catch(err){message(orderMessage,"Could not save order: "+err.message,true)}
     finally{$("save-order").disabled=false}
   });
