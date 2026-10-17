@@ -281,7 +281,7 @@
 
   netflixOrderButton.addEventListener("click", () => {
     if (!selectedNetflixPlan) return;
-    openWhatsApp("Hi Stream Zone! I'd like to order Netflix.\\n\\nSelected device: " + selectedNetflixPlan.device + "\\nPrice: " + selectedNetflixPlan.price + "\\n\\nPlease share payment and delivery details. Thank you.");
+    openWhatsApp("Hi, I want Netflix — " + selectedNetflixPlan.device + " (" + selectedNetflixPlan.price + ").");
   });
 
   document.querySelectorAll("[data-order]").forEach(button => {
