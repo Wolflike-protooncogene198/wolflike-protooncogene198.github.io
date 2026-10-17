@@ -75,6 +75,12 @@
     .price-row.price-feature span { color: #c9c3dc; font-size: .82rem; }
     .price-row.price-feature strong { color: #d8ccff; font-size: 1.08rem; letter-spacing: -.02em; }
     .price-note { color: var(--muted); font-size: .76rem; margin-top: -5px; }
+    .device-options { display: grid; gap: 8px; }
+    .device-option { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 12px; color: #e8e5f2; background: #ffffff05; font: inherit; font-size: .88rem; text-align: left; cursor: pointer; transition: border-color .18s, background .18s; }
+    .device-option strong { color: #fff; white-space: nowrap; }
+    .device-option:hover, .device-option[aria-pressed="true"] { border-color: #a78bfa; background: #7c3aed24; }
+    .device-option[aria-pressed="true"] { box-shadow: inset 0 0 0 1px #a78bfa55; }
+    [data-netflix-order]:disabled { opacity: .48; cursor: not-allowed; }
     .product .btn { width: 100%; margin-top: 5px; }
     .tag { color: #d7c9ff; background: #a78bfa18; border: 1px solid #a78bfa30; padding: 4px 8px; border-radius: 7px; font-size: .73rem; font-weight: 750; }
     .how { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
@@ -166,11 +172,14 @@
           <div class="product-head"><div class="product-icon netflix">N</div><div><h3>Netflix</h3><div class="sub">Movies & series</div></div></div>
           <p>Choose the device option that suits you. We’ll confirm availability through WhatsApp.</p>
           <div class="price-list">
-            <div class="price-row"><span>Mobile screen</span><strong>Rs. 400</strong></div>
-            <div class="price-row"><span>Laptop screen</span><strong>Rs. 400</strong></div>
-            <div class="price-row"><span>LED / Smart TV</span><strong>Rs. 550</strong></div>
+            <div class="device-options" role="group" aria-label="Choose Netflix device">
+              <button type="button" class="device-option" data-netflix-option="Mobile screen" data-price="Rs. 400" aria-pressed="false"><span>📱 Mobile screen</span><strong>Rs. 400</strong></button>
+              <button type="button" class="device-option" data-netflix-option="Laptop screen" data-price="Rs. 400" aria-pressed="false"><span>💻 Laptop screen</span><strong>Rs. 400</strong></button>
+              <button type="button" class="device-option" data-netflix-option="LED / Smart TV" data-price="Rs. 550" aria-pressed="false"><span>📺 LED / Smart TV</span><strong>Rs. 550</strong></button>
+            </div>
+            <div class="price-note" id="netflix-selection-note">Select one device option to continue.</div>
           </div>
-          <button class="btn btn-whatsapp" data-order="Netflix" data-plans="Mobile screen — Rs. 400|Laptop screen — Rs. 400|LED / Smart TV — Rs. 550">Order Netflix ↗</button>
+          <button class="btn btn-whatsapp" data-netflix-order disabled>Order selected Netflix plan ↗</button>
         </article>
 
         <article class="product">
@@ -250,6 +259,29 @@
       event.preventDefault();
       openWhatsApp("Hi Stream Zone! I'd like to ask about your available subscriptions and prices.");
     });
+  });
+
+  let selectedNetflixPlan = null;
+  const netflixOrderButton = document.querySelector("[data-netflix-order]");
+  const netflixSelectionNote = document.getElementById("netflix-selection-note");
+
+  document.querySelectorAll("[data-netflix-option]").forEach(option => {
+    option.addEventListener("click", () => {
+      selectedNetflixPlan = {
+        device: option.dataset.netflixOption,
+        price: option.dataset.price
+      };
+      document.querySelectorAll("[data-netflix-option]").forEach(item => {
+        item.setAttribute("aria-pressed", String(item === option));
+      });
+      netflixSelectionNote.textContent = "Selected: " + selectedNetflixPlan.device + " — " + selectedNetflixPlan.price;
+      netflixOrderButton.disabled = false;
+    });
+  });
+
+  netflixOrderButton.addEventListener("click", () => {
+    if (!selectedNetflixPlan) return;
+    openWhatsApp("Hi Stream Zone! I'd like to order Netflix.\\n\\nSelected device: " + selectedNetflixPlan.device + "\\nPrice: " + selectedNetflixPlan.price + "\\n\\nPlease share payment and delivery details. Thank you.");
   });
 
   document.querySelectorAll("[data-order]").forEach(button => {
