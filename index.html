@@ -60,6 +60,21 @@
     .section-head p { margin: 7px 0 0; color: var(--muted); }
     .products { display: grid; grid-template-columns: repeat(3,1fr); gap: 17px; }
     .product { background: linear-gradient(155deg,#191925,#111119); border: 1px solid var(--border); border-radius: var(--radius); padding: 21px; display: flex; flex-direction: column; min-height: 280px; transition: transform .2s,border-color .2s; }
+    .product { position: relative; overflow: hidden; box-shadow: 0 10px 28px #00000014; }
+    .product::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg,#a78bfa,#22d3ee); opacity: .8; }
+    .product:nth-child(1)::before { background: linear-gradient(90deg,#ef4444,#f97316); }
+    .product:nth-child(2)::before { background: linear-gradient(90deg,#38bdf8,#818cf8); }
+    .product:nth-child(3)::before { background: linear-gradient(90deg,#1ed760,#86efac); }
+    .product:nth-child(4)::before { background: linear-gradient(90deg,#a78bfa,#22d3ee); }
+    .product:nth-child(5)::before { background: linear-gradient(90deg,#c084fc,#818cf8); }
+    .product-label { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: 15px; padding: 5px 9px; border-radius: 999px; color: #d8ccff; background: #a78bfa12; border: 1px solid #a78bfa2b; font-size: .69rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .product-label .label-dot { width: 6px; height: 6px; border-radius: 50%; background: #a78bfa; }
+    .product p { min-height: 54px; }
+    .product .btn { min-height: 46px; }
+    .price-list { border-radius: 13px; }
+    .device-options { margin-top: 2px; }
+    .device-option { min-height: 48px; }
+    .product-footnote { color: #8e8ba2; font-size: .76rem; margin: 10px 0 0; text-align: center; }
     .product:hover { transform: translateY(-4px); border-color: #a78bfa6b; }
     .product-head { display: flex; align-items: center; gap: 13px; }
     .product-icon { width: 55px; height: 55px; flex: 0 0 55px; border-radius: 16px; display: grid; place-items: center; font-size: 1.4rem; font-weight: 900; background: #252337; }
@@ -190,7 +205,7 @@
       <div class="products">
         <article class="product">
           <div class="product-head"><div class="product-icon netflix"><img class="brand-logo netflix-logo" src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix logo"></div><div><h3>Netflix</h3><div class="sub">Movies & series</div></div></div>
-          <p>Choose the device option that suits you. We’ll confirm availability through WhatsApp.</p>
+          <div class="product-label"><span class="label-dot"></span> Choose your device</div><p>Choose the device option that suits you. We’ll confirm availability through WhatsApp.</p>
           <div class="price-list">
             <div class="device-options" role="group" aria-label="Choose Netflix device">
               <button type="button" class="device-option" data-netflix-option="Mobile screen" data-price="Rs. 400" aria-pressed="false"><span>📱 Mobile screen</span><strong>Rs. 400</strong></button>
@@ -200,34 +215,35 @@
             <div class="price-note" id="netflix-selection-note">Select one device option to continue.</div>
           </div>
           <button class="btn btn-whatsapp" data-netflix-order disabled>Order selected Netflix plan ↗</button>
+          <div class="product-footnote">WhatsApp order · confirm availability before payment</div>
         </article>
 
         <article class="product">
           <div class="product-head"><div class="product-icon prime prime-logo-wrap"><img class="prime-brand-logo" src="https://assets.aboutamazon.com/26/c7/11fb9c044d14870a3154c90d9bf5/prime-video-landscape-logo-blue-rgb.png" alt="Official Prime Video logo from Amazon Press Center"></div><div><h3>Amazon Prime Video</h3><div class="sub">Films & originals</div></div></div>
-          <p>Enjoy films, series and originals with a simple monthly plan.</p>
+          <div class="product-label"><span class="label-dot"></span> Monthly plan</div><p>Enjoy films, series and originals with a simple monthly plan.</p>
           <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 200</strong></div><div class="price-note">Price per month · PKR</div></div>
-          <button class="btn btn-whatsapp" data-order="Amazon Prime Video" data-plans="Monthly subscription — Rs. 200">Order Prime Video ↗</button>
+          <button class="btn btn-whatsapp" data-order="Amazon Prime Video" data-plans="Monthly subscription — Rs. 200">Order Prime Video ↗</button><div class="product-footnote">WhatsApp order · monthly price</div>
         </article>
 
         <article class="product">
           <div class="product-head"><div class="product-icon spotify"><img class="brand-logo" src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify logo"></div><div><h3>Spotify</h3><div class="sub">Music & podcasts</div></div></div>
-          <p>Your music and podcasts, with a clear monthly price.</p>
+          <div class="product-label"><span class="label-dot"></span> Monthly plan</div><p>Your music and podcasts, with a clear monthly price.</p>
           <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 399</strong></div><div class="price-note">Price per month · PKR</div></div>
-          <button class="btn btn-whatsapp" data-order="Spotify" data-plans="Monthly subscription — Rs. 399">Order Spotify ↗</button>
+          <button class="btn btn-whatsapp" data-order="Spotify" data-plans="Monthly subscription — Rs. 399">Order Spotify ↗</button><div class="product-footnote">WhatsApp order · monthly price</div>
         </article>
 
         <article class="product">
           <div class="product-head"><div class="product-icon iptv iptv-logo" aria-label="IPTV logo">IPTV</div><div><h3>IPTV</h3><div class="sub">Live TV entertainment</div></div></div>
-          <p>Explore live TV entertainment with a simple monthly price. Please confirm supported devices and licensed content availability before ordering.</p>
+          <div class="product-label"><span class="label-dot"></span> Monthly plan</div><p>Explore live TV entertainment with a simple monthly price. Please confirm supported devices and licensed content availability before ordering.</p>
           <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 450</strong></div><div class="price-note">Price per month · PKR</div></div>
-          <button class="btn btn-whatsapp" data-order="IPTV" data-plans="Monthly subscription — Rs. 450; please confirm supported devices and authorized content availability">Order IPTV ↗</button>
+          <button class="btn btn-whatsapp" data-order="IPTV" data-plans="Monthly subscription — Rs. 450; please confirm supported devices and authorized content availability">Order IPTV ↗</button><div class="product-footnote">Confirm supported devices and content availability</div>
         </article>
 
         <article class="product">
           <div class="product-head"><div class="product-icon hbo"><img class="brand-logo hbo-logo" src="https://cdn.simpleicons.org/hbomax/FFFFFF" alt="HBO Max logo"></div><div><h3>HBO Max</h3><div class="sub">Premium entertainment</div></div></div>
-          <p>Discover premium series and movies with a simple monthly price.</p>
+          <div class="product-label"><span class="label-dot"></span> Monthly plan</div><p>Discover premium series and movies with a simple monthly price.</p>
           <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 450</strong></div><div class="price-note">Price per month · PKR</div></div>
-          <button class="btn btn-whatsapp" data-order="HBO Max" data-plans="Monthly subscription — Rs. 450">Order HBO Max ↗</button>
+          <button class="btn btn-whatsapp" data-order="HBO Max" data-plans="Monthly subscription — Rs. 450">Order HBO Max ↗</button><div class="product-footnote">WhatsApp order · monthly price</div>
         </article>
       </div>
     </div>
