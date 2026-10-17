@@ -394,14 +394,12 @@
   document.querySelectorAll("[data-order]").forEach(button => {
     button.addEventListener("click", () => {
       const product = button.dataset.order;
-      // Display each semicolon-separated detail on its own line. Do not split on "|":
-      // the plan data uses em dashes and semicolons, not pipe characters.
       const planDetails = button.dataset.plans
         .split(";")
         .map(detail => detail.trim())
         .filter(Boolean)
-        .join("\\n");
-      openWhatsApp(`Hi Stream Zone! I'd like to place an order.\\n\\nProduct: ${product}\\nPlan details:\\n${planDetails}\\n\\nPlease confirm availability, payment details and delivery. Thank you.`);
+        .join(" ");
+      openWhatsApp(`Hi Stream Zone! I'd like to place an order.\n\n${product} ${planDetails}\n\nPlease confirm availability & payment details.  Thank you.`);
     });
   });
 
