@@ -71,6 +71,10 @@
     .price-list { display: grid; gap: 8px; margin: auto 0 16px; }
     .price-row { display: flex; justify-content: space-between; gap: 12px; color: #d7d4e3; font-size: .9rem; padding: 9px 0; border-bottom: 1px solid var(--border); }
     .price-row strong { color: white; white-space: nowrap; }
+    .price-row.price-feature { align-items: center; margin: 2px 0 4px; padding: 13px 12px; border: 1px solid #a78bfa35; border-radius: 12px; background: linear-gradient(110deg,#7c3aed20,#22d3ee08); }
+    .price-row.price-feature span { color: #c9c3dc; font-size: .82rem; }
+    .price-row.price-feature strong { color: #d8ccff; font-size: 1.08rem; letter-spacing: -.02em; }
+    .price-note { color: var(--muted); font-size: .76rem; margin-top: -5px; }
     .product .btn { width: 100%; margin-top: 5px; }
     .tag { color: #d7c9ff; background: #a78bfa18; border: 1px solid #a78bfa30; padding: 4px 8px; border-radius: 7px; font-size: .73rem; font-weight: 750; }
     .how { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
@@ -155,7 +159,7 @@
     <div class="wrap">
       <div class="section-head">
         <div><h2>Find your next favourite</h2><p>Choose a product below to place your order manually.</p></div>
-        <span class="tag">5 PRODUCTS</span>
+        <span class="tag">5 PRODUCTS · PRICES IN PKR</span>
       </div>
       <div class="products">
         <article class="product">
@@ -171,30 +175,30 @@
 
         <article class="product">
           <div class="product-head"><div class="product-icon prime">▶</div><div><h3>Amazon Prime Video</h3><div class="sub">Films & originals</div></div></div>
-          <p>Ask us about current plans and availability before placing your order.</p>
-          <div class="price-list"><div class="price-row"><span>Available plans</span><strong>Ask for price</strong></div></div>
-          <button class="btn btn-whatsapp" data-order="Amazon Prime Video" data-plans="Please share current plans and prices">Order Prime Video ↗</button>
+          <p>Enjoy films, series and originals with a simple monthly plan.</p>
+          <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 200</strong></div><div class="price-note">Price per month · PKR</div></div>
+          <button class="btn btn-whatsapp" data-order="Amazon Prime Video" data-plans="Monthly subscription — Rs. 200">Order Prime Video ↗</button>
         </article>
 
         <article class="product">
           <div class="product-head"><div class="product-icon spotify">≋</div><div><h3>Spotify</h3><div class="sub">Music & podcasts</div></div></div>
-          <p>Message us to check eligible plans and current pricing.</p>
-          <div class="price-list"><div class="price-row"><span>Available plans</span><strong>Ask for price</strong></div></div>
-          <button class="btn btn-whatsapp" data-order="Spotify" data-plans="Please share current plans and prices">Order Spotify ↗</button>
+          <p>Your music and podcasts, with a clear monthly price.</p>
+          <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 399</strong></div><div class="price-note">Price per month · PKR</div></div>
+          <button class="btn btn-whatsapp" data-order="Spotify" data-plans="Monthly subscription — Rs. 399">Order Spotify ↗</button>
         </article>
 
         <article class="product">
           <div class="product-head"><div class="product-icon iptv">▣</div><div><h3>IPTV</h3><div class="sub">Live TV entertainment</div></div></div>
-          <p>Ask for supported devices, channel details, and available subscription options.</p>
-          <div class="price-list"><div class="price-row"><span>Available plans</span><strong>Ask for price</strong></div></div>
-          <button class="btn btn-whatsapp" data-order="IPTV" data-plans="Please share supported devices, authorized channel details, plans and prices">Order IPTV ↗</button>
+          <p>Explore live TV entertainment with a simple monthly price. Please confirm supported devices and licensed content availability before ordering.</p>
+          <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 450</strong></div><div class="price-note">Price per month · PKR</div></div>
+          <button class="btn btn-whatsapp" data-order="IPTV" data-plans="Monthly subscription — Rs. 450; please confirm supported devices and authorized content availability">Order IPTV ↗</button>
         </article>
 
         <article class="product">
           <div class="product-head"><div class="product-icon hbo">H</div><div><h3>HBO Max</h3><div class="sub">Premium entertainment</div></div></div>
-          <p>Contact us to confirm regional availability and current plan details.</p>
-          <div class="price-list"><div class="price-row"><span>Available plans</span><strong>Ask for price</strong></div></div>
-          <button class="btn btn-whatsapp" data-order="HBO Max" data-plans="Please confirm regional availability and share current plans and prices">Order HBO Max ↗</button>
+          <p>Discover premium series and movies with a simple monthly price.</p>
+          <div class="price-list"><div class="price-row price-feature"><span>Monthly subscription</span><strong>Rs. 450</strong></div><div class="price-note">Price per month · PKR</div></div>
+          <button class="btn btn-whatsapp" data-order="HBO Max" data-plans="Monthly subscription — Rs. 450">Order HBO Max ↗</button>
         </article>
       </div>
     </div>
